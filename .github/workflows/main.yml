@@ -31,14 +31,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Install node version manager
-        run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-      - name: Set nvm environments
-        run: export NVM_DIR="/home/runner/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" &&[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
       - name: update npm package
         run: npm install -g npm@9.3.1
       - name: install aws cdk package
         run: npm install -g aws-cdk && cdk --version
+      - name: install aws cli
+        run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && sudo ./aws/install
       - name: bootstrap the account
         run: cdk bootstrap aws://$(aws sts get-caller-identity --query Account --output text)/us-east-1
         
