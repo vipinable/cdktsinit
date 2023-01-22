@@ -32,4 +32,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: check node version
-        run: node --verion
+        run: node --verion && npm --version
+      - name: update npm package
+        run: npm install -g npm@9.3.1
+      - name: install aws cdk package
+        run: npm install -g aws-cdk && cdk --version
+        
