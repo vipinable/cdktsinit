@@ -31,6 +31,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - name: Check aws cli
+        run: aws --verion && aws sts get-caller-identity --query Account --output text
       - name: update npm package
         run: npm install -g npm@9.3.1
       - name: install aws cdk package
