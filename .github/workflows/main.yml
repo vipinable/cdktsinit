@@ -39,4 +39,6 @@ jobs:
         run: npm install -g npm@9.3.1
       - name: install aws cdk package
         run: npm install -g aws-cdk && cdk --version
+      - name: bootstrap the account
+        run: cdk bootstrap
         
