@@ -32,9 +32,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Install node version manager
-        run: apt install npm
+        run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
       - name: install node 
-        run: npm --version
+        run: source ~/.bashrc && nvm --version
       - name: update npm package
         run: npm install -g npm@9.3.1
       - name: install aws cdk package
