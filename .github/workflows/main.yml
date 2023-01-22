@@ -34,7 +34,7 @@ jobs:
       - name: Install node version manager
         run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
       - name: find nvm
-        run: find . -name "nvm.sh"
+        run: ls -l /home/runner/.nvm
       - name: install node 
         run: source ~/.bashrc && nvm --version
       - name: update npm package
