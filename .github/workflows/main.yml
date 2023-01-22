@@ -21,7 +21,7 @@ env:
 jobs:
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: node:lts-bullseye
     environment: all
     defaults:
       run:
@@ -31,19 +31,5 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8
-      #- name: Test with Checkov
-      #  id: checkov
-      #  uses: bridgecrewio/checkov-action@master
-      #  with:
-      #    directory: ./
-      #    framework: terraform 
-      - name: Set remote path
-        run: sh tfremote.sh
-      - name: Terraform init
-        run: terraform init -input=false
-      - name: Terraform apply
-        run: terraform apply -auto-approve -input=false
+      - name: check node version
+        run: node --verion
