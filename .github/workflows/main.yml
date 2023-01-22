@@ -40,5 +40,5 @@ jobs:
       - name: install aws cdk package
         run: npm install -g aws-cdk && cdk --version
       - name: bootstrap the account
-        run: cdk bootstrap
+        run: cdk bootstrap aws://$(aws sts get-caller-identity --query Account --output text)/us-east-1
         
