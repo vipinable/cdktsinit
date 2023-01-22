@@ -31,6 +31,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - name: export region
+        run: export AWS_REGION="us-east-1"
       - name: Check aws cli
         run: aws --version && aws sts get-caller-identity --query Account --output text
       - name: update npm package
